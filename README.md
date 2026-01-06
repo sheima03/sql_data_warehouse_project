@@ -1,104 +1,66 @@
-Data Warehouse and Analytics Project
+# Data Warehouse & Analytics Project
 
-💡Project Overview
-This project is a simple end-to-end ETL and data analytics project that I built while learning data engineering concepts through online tutorials and practice.
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![SSMS](https://img.shields.io/badge/SSMS-DA1F26?style=for-the-badge&logo=microsoft&logoColor=white)
 
-The main goal is to:
+## 💡 Project Overview
+This project is an end-to-end **ETL (Extract, Transform, Load)** and data analytics pipeline. By moving data from raw CSV files into a structured SQL Server environment, this project simulates a real-world data warehousing workflow.
 
-Load raw data from CSV files
+**The main objectives are:**
+* **Ingest** raw data from flat files.
+* **Clean and Transform** data using SQL.
+* **Model** data for optimized querying.
+* **Analyze** business performance.
 
-Clean and transform the data using SQL
+---
 
-Build a structured data model for analysis
+## 🏗️ Architecture Overview
+I implemented a **Medallion Architecture**, which organizes data into three distinct layers to ensure quality and traceability.
 
-Run analytical queries to extract business insights
 
-This project helped me understand how data flows from raw sources to analytics-ready tables.
 
-🏗️ Architecture Overview
+[Image of Medallion Architecture]
 
-I followed a simplified Medallion Architecture, organized into three layers:
 
-🥉 Bronze – Raw Data
+### 🥉 Bronze (Raw Layer)
+* **Source:** Raw CSV files.
+* **Storage:** Data is loaded "as-is" to keep a copy of the original records.
 
-Raw CSV files loaded into SQL Server
+### 🥈 Silver (Cleaned Layer)
+* **Process:** Data cleaning, deduplication, and standardization.
+* **Tasks:** Handling nulls and correcting data types.
 
-Data is stored as-is, without modifications
+### 🥇 Gold (Analytics Layer)
+* **Model:** Structured into **Fact and Dimension tables** (Star Schema).
+* **Purpose:** Business-friendly tables used for reporting.
 
-Purpose: keep a copy of the original data
 
-🥈 Silver – Cleaned Data
 
-Data cleaning and standardization
+---
 
-Handling missing values and inconsistent formats
+## ⚙️ Tools & Technologies
+* **SQL Server Express:** Database engine.
+* **SSMS:** SQL development and management.
+* **Draw.io:** Architecture and data model diagrams.
+* **Git & GitHub:** Version control.
 
-Preparing data for analytics
+---
 
-🥇 Gold – Analytics Layer
+## 🔄 ETL Process
 
-Business-friendly tables
+1. **Extract:** Loading CSV data into **Bronze** staging tables.
+2. **Transform:** Using SQL for type casting, removing duplicates, and normalizing formats.
+3. **Load:** Populating the **Gold** layer with clean, analytical tables.
 
-Fact and dimension tables (star schema)
+---
 
-Used for reporting and analysis
-
-This layered approach makes the pipeline clear, scalable, and easy to debug.
-
-⚙️ Tools & Technologies
-
-SQL Server Express – Database engine
-
-SQL Server Management Studio (SSMS) – SQL development & management
-
-CSV Files – Source data
-
-Draw.io – Architecture and data model diagrams
-
-Git & GitHub – Version control
-
-All tools used in this project are free.
-
-🔄 ETL Process
-
-Extract
-
-Load CSV files into staging (Bronze) tables
-
-Transform
-
-Clean data (dates, nulls, duplicates)
-
-Normalize column formats
-
-Prepare keys for joins
-
-Load
-
-Insert clean data into Silver tables
-
-Build analytics tables in the Gold layer
-
-📊 Analytics & Reporting
-
-Using the Gold layer, I created SQL queries to analyze:
-
-Customer behavior
-
-Product performance
-
-Sales trends over time
-
-These queries simulate real business questions and help practice analytical thinking with SQL.
-
-📂 Project Structure
-
-🎯 What I Learned
-
-How ETL pipelines work in practice
-
-How to structure a data warehouse
-
-Difference between raw, cleaned, and analytics data
-
-Writing cleaner and more efficient SQL
+## 📂 Project Structure
+```text
+├── sql_scripts/
+│   ├── 01_bronze_layer.sql
+│   ├── 02_silver_layer.sql
+│   ├── 03_gold_layer.sql
+│   └── 04_analytics.sql
+├── data/
+│   └── raw_csv_files/
+└── README.md
